@@ -1,0 +1,7 @@
+# Steam Machine silicon result
+
+AMD identifies the observed 19h/7Ch/0 signature as Hawkpoint2. The Ryzen 5 8540U is the closest commercial comparison and lacks a supported NPU. Fremont firmware explicitly names an IPU at 08:00.1. The device does not enumerate and the installed amdxdna driver has nothing to bind. Physical XDNA presence remains unknown.
+
+The integrated GPU is the best-supported unused block. Product reporting describes it as fused off, and firmware links the integrated graphics node to a dummy PCI function. The separate Navi 33 exposes 28 active CUs across 32 architectural positions plus working driver paths for VCN, JPEG and SDMA. Neither the health of the missing CUs nor a software recovery path is established.
+
+[Findings](../findings.md) · [Capability matrix](capability-matrix.md) · [Firmware namespace](../evidence/acpi.md)
