@@ -4,7 +4,7 @@
 
 The question started with the original Steam Deck. Its custom processor was suspected of sharing a design with AMD silicon used in the Magic Leap 2 headset. That raised a possibility: could a processor designed for one product carry an unused vision accelerator into another? That possibility prompted this read-only investigation of one Valve Steam Machine, code-named **Fremont**.
 
-[Short report](reports/summary.md) · [Detailed findings](findings.md) · [Full capability matrix](reports/capability-matrix.md)
+[Follow-up discoveries](reports/followup-summary.md) · [Original short report](reports/summary.md) · [Detailed findings](findings.md) · [Full capability matrix](reports/capability-matrix.md)
 
 ## What’s inside, and what appears to be switched off?
 
@@ -21,7 +21,7 @@ Fremont has two separate AMD chips. The **CPU** runs general-purpose code. Its i
 
 **How can the BIOS name a device that Linux can’t find?** At startup, the BIOS gives Linux a set of tables called ACPI. One entry says where the IPU would appear on the computer’s internal device bus. Linux also builds an inventory of the devices it actually finds on that bus. On this machine the address appears in the first list, and the second list has no device at that address. Installing an AI driver alone would leave it with nothing to talk to.
 
-**What did the investigation uncover?** The report documents the exact IPU address and the audio coprocessor’s power methods in this machine’s firmware. The IPU entry contains just its address. There is no confirmed discovery of a dormant accelerator or a demonstrated way to enable one. This report makes no claim to being the first to suggest those possibilities. Comparing these tables with a Ryzen 5 8540U machine could show whether AMD routinely includes that entry on products without a supported NPU. To answer the separate physical question, the best evidence would be a diagram of the silicon tied to Valve’s exact processor, or confirmation from AMD or Valve. [ACPI analysis](evidence/acpi.md) · [Outstanding questions](findings.md)
+**What did the investigation uncover?** Fremont and a Framework laptop with an enumerated NPU have exactly the same 13-byte IPU declaration. A Lenovo laptop with a Ryzen 5 PRO 8540U has the same dummy-only PCI branch as Fremont, and its matching BIOS describes an NPU there. This gives a concrete firmware explanation for the empty address. Determining what circuitry exists on Fremont still requires evidence tied to Valve’s exact processor. [Comparator captures and BIOS evidence](evidence/followup-comparators.md)
 
 ## What if the NPU were there and Linux could use it?
 
